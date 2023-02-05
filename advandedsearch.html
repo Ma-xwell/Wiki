@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="navbar">
+            <nav>
+                <a href="index.html">Google Search</a>
+            </nav>
+        </div>
+        
+        <label>Advanced search</label>
+        <div class="line">
+            <div class="linetext"><span>Find pages with...</span></div>
+            <div class="linebar">&nbsp;</div>
+            <div class="linetext"><span>To do this in the search box.</span></div>
+        </div>
+        <div class="">
+            <form action="https://google.com/search">
+                <div class="line">
+                    <div class="linetext">
+                    <p>all these words:</p>
+                    </div>
+                    <div class="linebar">
+                    <input type="text" name="as_q" class="searchbaradvanced">
+                    </div>
+                    <div class="linetext">
+                    <p>Type the important words: tri-colour rat terrier</p>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="linetext">
+                    <p>this exact word or phrase:</p>
+                    </div>
+                    <div class="linebar">
+                    <input type="text" name="as_epq" class="searchbaradvanced">
+                    </div>
+                    <div class="linetext">
+                    <p>Put exact words in quotes: "rat terrier"</p>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="linetext">
+                    <p>any of these words:</p>
+                    </div>
+                    <div class="linebar">
+                    <input type="text" name="as_oq" class="searchbaradvanced">
+                   </div>
+                    <div class="linetext">
+                    <p>Type OR between all the words you want: miniature OR standard</p>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="linetext">
+                    <p>none of these words:</p>
+                    </div>
+                    <div class="linebar">
+                    <input type="text" name="as_eq" class="searchbaradvanced">
+                    </div>
+                    <div class="linetext">
+                    <p>Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</p>
+                    </div>
+                </div>  
+                <input type="submit" value="Advanced Search" id="advancedbutton">
+            </form>
+        </div>
+    </body>
+</html>
