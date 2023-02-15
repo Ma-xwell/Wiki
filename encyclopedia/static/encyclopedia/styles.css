@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: white;
+    overflow-x: hidden;
 }
 
 code {
@@ -39,10 +40,17 @@ textarea {
 
 #newcontentdiv {
     height: 75%;
+    width: 75%;
 }
 
 #newcontent {
     height: 100%;
     resize: none;
     overflow: auto;
+}
+
+#strap {
+    height: 1px;
+    width: 60%;
+    background-color: gray;
 }

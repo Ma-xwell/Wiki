@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponseNotFound
 from . import util
 import random
+import markdown2
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -15,7 +15,7 @@ def entry(request, title):
         })
     return render(request, "encyclopedia/entry.html", {
         "title": title,
-        "content": util.get_entry(title)
+        "content": markdown2.markdown(util.get_entry(title))
     })
     
 def search(request):

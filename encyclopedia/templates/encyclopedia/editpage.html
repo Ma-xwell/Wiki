@@ -6,13 +6,15 @@
 
 {% block body %}
 
-    <h1>Change the {{ title }} by using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">markdown text</a></h1>
-    <form id="newcontentdiv" action="{{ newtitle }}" method="POST">
-        {% csrf_token %}
-        <input name="newtitle" type="text" minlength="1" maxlength="100" required value="{{ title }}">
-        <button type="submit">Save changes</button>
-        <div>&nbsp</div>
-        <textarea id="newcontent" name="newcontent" minlength="5">{{ content }}</textarea>
-    </form>
+    <h1 style="width: auto">Change the {{ title }} by using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">markdown text</a></h1>
+    <div id="newcontentdiv">
+        <form action="{{ newtitle }}" method="POST" style="height: 100%">
+            {% csrf_token %}
+            <input name="newtitle" type="text" minlength="1" maxlength="100" required value="{{ title }}">
+            <button type="submit">Save changes</button>
+            <div>&nbsp</div>
+            <textarea id="newcontent" name="newcontent" minlength="5">{{ content }}</textarea>
+        </form>
+    </div>
 
 {% endblock %}
