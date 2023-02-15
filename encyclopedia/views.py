@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseNotFound
 from . import util
+import random
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -72,17 +73,25 @@ def newpage(request):
 def editpage(request, title):
     
     if request.method == "POST":
-        newtitle = request.POST.get("title")
+        newtitle = request.POST.get("newtitle")
         newcontent = request.POST.get("newcontent")
+        oldtitle = request.POST.get("oldtitle")
+        util.delete_entry(oldtitle)
         util.save_entry(newtitle, newcontent)
-        if util.get_entry(newtitle):
-            util.delete_entry(title)
-        return render(request, "encyclopedia/entry.html", {
-            "title": newtitle,
-            "content": newcontent
-        })
+        
+        return redirect("encyclopedia:entry", title=str(newtitle))
+        #return render(request, "encyclopedia/entry.html", {
+        #    "title": newtitle,
+        #    "content": newcontent
+        #})
     else:
         return render(request, "encyclopedia/editpage.html", {
             "title": title,
             "content": util.get_entry(title)
         })
+
+def randompage(request):
+    list_of_titles = util.list_entries()
+    index = random.randint(0, len(list_of_titles) - 1)
+    title = list_of_titles[index]
+    return redirect("wiki/" + title)
