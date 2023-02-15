@@ -13,8 +13,10 @@ def entry(request, title):
         return render(request, "encyclopedia/error.html", {
             "error": 404
         })
+    print([x.lower() for x in util.list_entries()])
+    index = [x.lower() for x in util.list_entries()].index(title.lower())
     return render(request, "encyclopedia/entry.html", {
-        "title": title,
+        "title": util.list_entries()[index],
         "content": markdown2.markdown(util.get_entry(title))
     })
     
