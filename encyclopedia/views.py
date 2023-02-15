@@ -75,15 +75,18 @@ def editpage(request, title):
     if request.method == "POST":
         newtitle = request.POST.get("newtitle")
         newcontent = request.POST.get("newcontent")
-        oldtitle = request.POST.get("oldtitle")
-        util.delete_entry(oldtitle)
-        util.save_entry(newtitle, newcontent)
+        if title == newtitle:
+            util.delete_entry(title)
+            util.save_entry(newtitle, newcontent)
+        else:
+            if newtitle in util.list_entries():
+                return render(request, "encyclopedia/error.html", {
+                    "error": "Such article already exists"
+                })
+            util.delete_entry(title)
+            util.save_entry(newtitle, newcontent)
         
         return redirect("encyclopedia:entry", title=str(newtitle))
-        #return render(request, "encyclopedia/entry.html", {
-        #    "title": newtitle,
-        #    "content": newcontent
-        #})
     else:
         return render(request, "encyclopedia/editpage.html", {
             "title": title,
