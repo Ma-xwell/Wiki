@@ -14,7 +14,7 @@
             {% if error == 404 %}
                 <h3>Page not found</h3>
                 <h4>Go back to the <a href="{% url 'encyclopedia:index' %}">main page</a>.</h4>
-            {% elif error == "No title provided" or error == "Such article already exists" or error == "No title provided" %}
+            {% elif error == "No title provided" or error == "Such article already exists" or error == "Please provide the content" %}
                 <h3>Article was not created</h3>
                 <h4>Go back to the <a href="{% url 'encyclopedia:index' %}">main page</a>.</h4>
             {% endif %}
