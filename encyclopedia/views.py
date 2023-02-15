@@ -68,3 +68,21 @@ def newpage(request):
         })
     else:
         return render(request, "encyclopedia/newpage.html")
+    
+def editpage(request, title):
+    
+    if request.method == "POST":
+        newtitle = request.POST.get("title")
+        newcontent = request.POST.get("newcontent")
+        util.save_entry(newtitle, newcontent)
+        if util.get_entry(newtitle):
+            util.delete_entry(title)
+        return render(request, "encyclopedia/entry.html", {
+            "title": newtitle,
+            "content": newcontent
+        })
+    else:
+        return render(request, "encyclopedia/editpage.html", {
+            "title": title,
+            "content": util.get_entry(title)
+        })
