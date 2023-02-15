@@ -14,8 +14,8 @@
             {% if error == 404 %}
                 <h3>Page not found</h3>
                 <h4>Go back to the <a href="{% url 'index' %}">main page</a>.</h4>
-            {% else %}
-                <h3>Page is not currently available</h3>
+            {% elif error == "No title provided" or error == "Such article already exists" or error == "No title provided" %}
+                <h3>Article was not created</h3>
                 <h4>Go back to the <a href="{% url 'index' %}">main page</a>.</h4>
             {% endif %}
         </div>

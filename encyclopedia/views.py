@@ -43,3 +43,28 @@ def search(request):
                     "query": q,
                     "result_list": result_list
             })
+            
+def newpage(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        if not title:
+            return render(request, "encyclopedia/error.html", {
+                "error": "No title provided"
+            })
+        elif title.lower() in [x.lower() for x in util.list_entries()]:
+            return render(request, "encyclopedia/error.html", {
+                "error": "Such article already exists"
+            })
+            
+        newcontent = request.POST.get("newcontent")
+        if not newcontent:
+            return render(request, "encyclopedia/error.html", {
+                "error": "Please provide the content"
+            })
+        util.save_entry(title, newcontent)
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "content": newcontent
+        })
+    else:
+        return render(request, "encyclopedia/newpage.html")

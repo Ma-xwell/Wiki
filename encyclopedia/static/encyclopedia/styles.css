@@ -36,3 +36,13 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+#newcontentdiv {
+    height: 75%;
+}
+
+#newcontent {
+    height: 100%;
+    resize: none;
+    overflow: auto;
+}
